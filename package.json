@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
+    "buildpro": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "commit": "git add . && git commit -m \"auto-commit\""

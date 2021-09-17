@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ResultCardModule } from './components/result-card.module';
 import { ResultsComponent } from './results.component';
-import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [ResultsComponent],
-  imports: [CommonModule, MatCardModule],
+  imports: [CommonModule, ResultCardModule],
   exports: [ResultsComponent],
   providers: [],
 })

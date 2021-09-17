@@ -1,0 +1,11 @@
+<div *ngIf="anyResults()" class="results">
+  <h1>The results for {{ date | date: "EEEE, MMMM d y" }} are:</h1>
+  <app-result-card
+    *ngFor="let country of countries"
+    [country]="country"
+    [names]="results[country]"
+  ></app-result-card>
+</div>
+<div *ngIf="noResults()">
+  <h1>No results were found</h1>
+</div>

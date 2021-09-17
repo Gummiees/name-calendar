@@ -5,10 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule } from './calendar/calendar.module';
-import { ResultsModule } from './results/results.module';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CalendarModule } from './components/calendar/calendar.module';
+import { ResultsModule } from './components/results/results.module';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,10 +17,10 @@ import { MatDividerModule } from '@angular/material/divider';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatProgressBarModule,
     CalendarModule,
     ResultsModule,
     MatDividerModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

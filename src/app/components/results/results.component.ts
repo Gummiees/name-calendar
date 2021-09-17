@@ -6,18 +6,23 @@ import { Namedays } from '@shared/models/api.model';
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss'],
 })
+/** In this component I use inputs instead of RxJs to prove knowledgement of inputs/outputs. */
 export class ResultsComponent {
   @Input() public set results(res: Namedays) {
     this._results = res;
     this.countries = Object.keys(res);
+    if (this.countries.length > 0) {
+      this.firstApiCallFinished = true;
+    }
   }
   public get results(): Namedays {
     return this._results;
   }
   @Input() public loading: boolean = false;
-  public apiHasBeenCalled: boolean = false;
+  @Input() public date: Date | undefined;
   public countries: string[] = [];
   private _results: Namedays = {};
+  private firstApiCallFinished: boolean = false;
 
   constructor() {}
 
@@ -26,6 +31,6 @@ export class ResultsComponent {
   }
 
   public noResults(): boolean {
-    return this.apiHasBeenCalled && !this.anyResults();
+    return this.firstApiCallFinished && !this.anyResults();
   }
 }

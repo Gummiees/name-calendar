@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnDestroy {
   public results: Namedays = {};
+  public date: Date | undefined;
   public loading: boolean = false;
   private subscriptions: Subscription[] = [];
   constructor(
@@ -32,14 +33,26 @@ export class AppComponent implements OnDestroy {
   }
 
   private async onSelectDate(date: Date) {
+    this.date = date;
     try {
       this.loading = true;
       const response: Rs = await this.apiService.getNames(date);
-      this.results = response?.data?.namedays || {};
+      this.results = this.removeNoNamesCountries(response?.data?.namedays);
     } catch (e) {
       this.results = {};
     } finally {
       this.loading = false;
     }
+  }
+
+  private removeNoNamesCountries(results?: Namedays): Namedays {
+    if (!results) {
+      return {};
+    }
+    const noResultsCountries = Object.keys(results).filter(
+      (key) => !results[key] || results[key] === 'n/a'
+    );
+    noResultsCountries.forEach((key) => delete results[key]);
+    return results;
   }
 }

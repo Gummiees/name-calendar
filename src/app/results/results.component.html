@@ -1,0 +1,9 @@
+<div *ngIf="anyResults()" class="results">
+  <h1>The results are:</h1>
+  <mat-card class="result" *ngFor="let country of countries" role="group">
+    {{ country }}: {{ results[country] }}
+  </mat-card>
+</div>
+<div *ngIf="noResults()">
+  <h1>No results were found</h1>
+</div>

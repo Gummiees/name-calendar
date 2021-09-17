@@ -1,0 +1,10 @@
+<div class="main-container" role="main">
+  <mat-progress-bar
+    *ngIf="loading"
+    class="progress-bar"
+    mode="indeterminate"
+  ></mat-progress-bar>
+  <app-calendar></app-calendar>
+  <mat-divider></mat-divider>
+  <app-results [results]="results" [loading]="loading"></app-results>
+</div>

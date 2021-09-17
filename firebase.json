@@ -8,11 +8,22 @@
         "destination": "/index.html"
       }
     ],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      }
+    ],
     "redirects": [
       {
         "source": "/api/**",
         "destination": "https://nameday.abalin.net/",
-        "type": 302
+        "type": 301
       }
     ]
   }

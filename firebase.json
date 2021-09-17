@@ -11,7 +11,7 @@
     "redirects": [
       {
         "source": "/api/**",
-        "destination": "https://nameday.abalin.net",
+        "destination": "https://nameday.abalin.net/",
         "type": 302
       }
     ]

@@ -8,13 +8,18 @@ import { Rq, Rs } from '@shared/models/api.model';
 export class ApiService {
   constructor(private httpClient: HttpClient) {}
 
-  async getNames(date: Date): Promise<Rs> {
-    return this.httpClient
-      .post<Rs>(`/api/namedays`, this.parseDateToRequest(date))
-      .toPromise();
+  async getNames(date: Date): Promise<Rs | null> {
+    const rq: Rq | null = this.parseDateToRequest(date);
+    if (!rq) {
+      return null;
+    }
+    return this.httpClient.post<Rs>(`/api/namedays`, rq).toPromise();
   }
 
-  private parseDateToRequest(date: Date): Rq {
+  parseDateToRequest(date: Date): Rq | null {
+    if (!(date instanceof Date)) {
+      return null;
+    }
     return {
       day: date.getDate(),
       month: date.getMonth() + 1,

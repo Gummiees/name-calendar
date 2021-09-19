@@ -14,6 +14,9 @@ export class StateService {
   }
 
   setDate(date: Date): void {
+    if (!(date instanceof Date)) {
+      return;
+    }
     this.dateChangeSubject.next(date);
   }
 }

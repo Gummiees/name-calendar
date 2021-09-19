@@ -38,17 +38,17 @@ Because of the mentioned above, I decided to implement a bit of each in this pra
 
 I used some `Input` for some components, while using `RxJS` for others.
 
-The reason for me to transition from `Input` to a state solution, is because `Input` and `Output`, on big scale applications with quite a large tree of component dependencies, is tedious, not easy to read nor mantain, escalates the difficulty of the project, and it even introduces bugs.
+The reason for me to transition from `Input` to a state solution, is because `Input` and `Output`, on big scale applications with quite a large tree of component dependencies, is tedious, not easy to read nor maintain, escalates the difficulty of the project, and it even introduces bugs.
 
 For instance, imagine you have a component. Now this component has a child component, which requires an input from the parent, and the parent updates some variable both through his own logic, and through the child component's output.
 
-Now add a child to the child, that acts samewise as the parent. Now a child to the child of the child.
+Now add a child to the child, that acts as the parent. Now a child to the child of the child.
 
-Now you have to apply logic to the component, the child, the grandchild, and the great-grandchild. Not only that, but the output from the great-grandchild has to be emitted all the way up to the original one, while each component implements it's logic.
+After this, you have to apply logic to the component, the child, the grandchild, and the great-grandchild. Not only that, but the output from the great-grandchild has to be emitted all the way up to the original one, while each component implements its logic.
 
 The deeper you go, the harder it gets. However, if you instead of following an `Input/Output` approach, decide to go for an `Observable` one, it is way easier in my opinion. Plus no delays from the render of the DOM.
 
-This is the functionallity of the `StateService`.
+This is the functionality of the `StateService`.
 
 ### `Input` setter and getter
 
@@ -64,13 +64,13 @@ As commented on the function, at first I was going for the easy route to make su
 
 Then, when everything was working, I decided to focus on making it efficient.
 
-The solution I came up with was, intuitively, the simplest one, so I was not sure it would be actually faster. Simply check if there is a comma with `.includes(',')`, so I did some benchmarks.
+The solution I came up with was, intuitively, the simplest one, so I was not sure if it would be actually faster. Simply check if there is a comma with `.includes(',')`, so I did some benchmarks.
 
 Using the Chrome debugging tools, under the performance tab, you can record the time it takes for almost anything.
 
 So I created two testing functions that did the above a lot of times, to see which one is faster.
 
-This were the results:
+These were the results:
 
 ![Benchmark results](./Screenshot_1.png)
 
@@ -119,7 +119,7 @@ I can further explain it on the interview.
 
 ## SCSS
 
-I was not able to do much with it since I focused rather on the functionallity of the application.
+I was not able to do much with it since I focused rather on the functionality of the application.
 
 Still, there are some (very few) things done with it.
 
@@ -136,7 +136,7 @@ I have used it for:
 - Spinner (styling)
 - Divider (styling)
 
-I think they also look minimalistic while modern and pleasing to the eye without having to change anything, which internally means you do not have worry too much about styling once you are finished.
+I think they also look minimalistic while modern and pleasing to the eye without having to change anything, which internally means you do not have to worry too much about styling once you are finished.
 
 ## Linting
 
@@ -146,9 +146,9 @@ I have also used Prettier since I have worked with it since I started programmin
 
 ## Testing
 
-In the company I have and am working for, we do not do testing because of client requiements, so this was new for me.
+In the company I have been working for, we do not do testing because of client requirements, so this was new for me.
 
-I usually do not do testing neither for my own personal projects since I do them for myself to make some process more agile.
+I usually do not do testing, neither for my own personal projects, since I do them for myself to make some process more agile.
 
 I tried to do a high coverage testing with the knowledge I have since I have done some courses about it, but I am uncertain to have done them properly.
 
@@ -159,7 +159,7 @@ My objective was to not only have a high code coverage while making sure the tes
 
 I usually make everything private if possible, even though it is sugar syntax.
 
-I still think it makes the code cleaner, since you know this variable or function is not meant to be used outside of the scope nor on the HTML.
+I still think it makes the code cleaner, since you know this variable or function is not meant to be used outside the scope nor on the HTML.
 
 However, to be able to test almost everything, I had to make some of them public.
 
@@ -169,14 +169,14 @@ Since I was a bit in a hurry for this project, I did not write down many comment
 
 I usually develop the solution I have analyzed, and before committing and pushing, I write down the comments explaining everything.
 
-In this case however, I preffered to write this README.
+In this case however, I preferred to write this README.
 ## Other
 
 I had some ideas about this project that I wanted to implement. I was able to do some, but had others that I couldn't finish up.
 
 ### Proxy
 
-Since I was having trouble with CORS because of using differents domains for API and frontend, I had to use a proxy configuration for the development environment.
+Since I was having trouble with CORS because of using different domains for API and frontend, I had to use a proxy configuration for the development environment.
 
 The file used is called `proxy.conf.json`, and can be found in the root of the project.
 
@@ -195,7 +195,7 @@ What this does is to make URLs cleaner. No need for barrels, and no more `../../
 
 ### GitHub Actions
 
-Since I like DevOps and I am quite interested on it, in my free time and with my projects, I usually try to integrate some basic CI/CD pipelines so the code not only gets tested (in my case linted), but also build and deployed automatically.
+Since I like DevOps and I am quite interested on it, in my free time and with my projects, I usually try to integrate some basic CI/CD pipelines, so the code not only gets tested (in my case linted), but also build and deployed automatically.
 
 In this case, I made two different actions.
 - One is activated when creating a PR towards `master`. This checks linting and testing.
@@ -211,7 +211,7 @@ If no errors are found, it goes to `master`, which would also be known as Produc
 
 If an error emerges from `master`, a `hotfix` branch would emerge from it, and then a PR would be made back to `master` and also `develop`.
 
-This way no commits are made on `master` except the completed PRs.
+This way, no commits are made on `master` except the completed PRs.
 
 [The actions past runs can be found here](https://github.com/Gummiees/name-calendar/actions).
 
@@ -222,16 +222,16 @@ This way no commits are made on `master` except the completed PRs.
 I wanted to host the website on Firebase. However, some problems appeared:
   - I wasn't able to make the API calls to the REST service because of CORS.
   - I am no expert on this topic, therefore I investigated a little on it.
-  - After some time without any working results, I decided to leave it there since this practice has to be done under certain time and this is not a requirement neither a sugestion, I was simply doing it so it would be easier to share.
+  - After some time without any working results, I decided to leave it there since this practice has to be done under certain time and this is not a requirement neither a suggestion, I was simply doing it, so it would be easier to share.
 
 On other projects, I was able to successfully host Angular sites on Firebase, same as with this one, even with a GitHub action associated to it. However, because of CORS, I was not able to have a production version which was able to retrieve information from the API.
 
 ### Styling
 
-I know it clearly says it will not be taking into consideration, but still I wanted to so something somewhat pretty. It is also mobile-friendly.
+I know it clearly says it will not be taking into consideration, but still I wanted to do something somewhat pretty. It is also mobile-friendly.
 
 ### Commits
 
-The commits descriptions are obviously not well made and in a hurry. Again, in a real environment I would describe the changes that were made and, if necessary, also the reason to make them in the first place.
+The commits descriptions are obviously not well-made and in a hurry. Again, in a real environment I would describe the changes that were made and, if necessary, also the reason to make them in the first place.
 
-Here, however, since I thought I could be running out of time, I decided to rather not have time to do proper commit messages than to omit some functionallity.
+Here, however, since I thought I could be running out of time, I decided to rather not have time to do proper commit messages than to omit some functionality.

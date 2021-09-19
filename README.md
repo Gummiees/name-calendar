@@ -229,3 +229,9 @@ On other projects, I was able to successfully host Angular sites on Firebase, sa
 ### Styling
 
 I know it clearly says it will not be taking into consideration, but still I wanted to so something somewhat pretty. It is also mobile-friendly.
+
+### Commits
+
+The commits descriptions are obviously not well made and in a hurry. Again, in a real environment I would describe the changes that were made and, if necessary, also the reason to make them in the first place.
+
+Here, however, since I thought I could be running out of time, I decided to rather not have time to do proper commit messages than to omit some functionallity.

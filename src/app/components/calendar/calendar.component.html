@@ -4,7 +4,9 @@
       <mat-card-title>Pick a date!</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <mat-calendar (selectedChange)="onDateChanges($event)"></mat-calendar>
+      <mat-calendar
+        (selectedChange)="stateService.setDate($event)"
+      ></mat-calendar>
     </mat-card-content>
   </mat-card>
 </div>

@@ -15,8 +15,8 @@ export class AppComponent implements OnDestroy {
   public loading: boolean = false;
   private subscriptions: Subscription[] = [];
   constructor(
-    private apiService: ApiService,
-    private stateService: StateService
+    private stateService: StateService,
+    private apiService: ApiService
   ) {
     this.listenToDateChanges();
   }
@@ -25,27 +25,8 @@ export class AppComponent implements OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
-  private listenToDateChanges() {
-    const sub: Subscription = this.stateService
-      .getDateChangeSubject()
-      .subscribe((date: Date) => this.onSelectDate(date));
-    this.subscriptions.push(sub);
-  }
-
-  private async onSelectDate(date: Date) {
-    this.date = date;
-    try {
-      this.loading = true;
-      const response: Rs = await this.apiService.getNames(date);
-      this.results = this.removeNoNamesCountries(response?.data?.namedays);
-    } catch (e) {
-      this.results = {};
-    } finally {
-      this.loading = false;
-    }
-  }
-
-  private removeNoNamesCountries(results?: Namedays): Namedays {
+  // Has to be public in order to test it.
+  removeNoNamesCountries(results?: Namedays | null): Namedays {
     if (!results) {
       return {};
     }
@@ -54,5 +35,30 @@ export class AppComponent implements OnDestroy {
     );
     noResultsCountries.forEach((key) => delete results[key]);
     return results;
+  }
+
+  // Has to be public in order to test it.
+  async onSelectDate(date: Date): Promise<void> {
+    this.date = date;
+    try {
+      this.loading = true;
+      const response: Rs | null = await this.apiService.getNames(date);
+      this.setResults(response);
+    } catch (e) {
+      this.results = {};
+    } finally {
+      this.loading = false;
+    }
+  }
+
+  setResults(response: Rs | null): void {
+    this.results = this.removeNoNamesCountries(response?.data?.namedays);
+  }
+
+  private listenToDateChanges(): void {
+    const sub: Subscription = this.stateService
+      .getDateChangeSubject()
+      .subscribe((date: Date) => this.onSelectDate(date));
+    this.subscriptions.push(sub);
   }
 }

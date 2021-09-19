@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ResultCardModule } from './components/result-card.module';
+import { ResultCardModule } from './components/result-card/result-card.module';
 import { ResultsComponent } from './results.component';
 
 @NgModule({

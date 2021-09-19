@@ -1,0 +1,47 @@
+.result {
+  margin-top: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  > div {
+    text-align: center;
+  }
+
+  /** Necessary to keep the verical alignment. **/
+  .result-icon {
+    height: 24px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .result {
+    flex-direction: row;
+
+    /** Necessary to maintain the center alignment */
+    > div {
+      display: flex;
+      align-items: center;
+      width: 33%;
+      flex-wrap: wrap;
+
+      &:first-child {
+        justify-content: flex-start;
+      }
+
+      &:not(:first-child):not(:last-child) {
+        justify-content: center;
+      }
+
+      &:last-child {
+        justify-content: flex-end;
+      }
+
+      .result-icon {
+        height: 24px;
+      }
+    }
+  }
+}

@@ -20,9 +20,10 @@ export class ResultsComponent {
   }
   @Input() public loading: boolean = false;
   @Input() public date: Date | undefined;
+  // Has to be public in order to test it.
+  public firstApiCallFinished: boolean = false;
   public countries: string[] = [];
   private _results: Namedays = {};
-  private firstApiCallFinished: boolean = false;
 
   constructor() {}
 

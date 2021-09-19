@@ -6,7 +6,7 @@
     "start": "ng serve --proxy-config proxy.conf.json",
     "test": "ng test",
     "coverage": "ng test --code-coverage",
-    "ci-test": "ng test -- --no-watch --no-progress --browsers=ChromeHeadlessCI",
+    "ci-test": "ng test --no-watch --browsers=ChromeHeadlessCI",
     "lint": "ng lint",
     "watch": "ng build --watch --configuration development",
     "build": "ng build",
